@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TickerStories</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		    <!-- Bootstrap core CSS -->
+		<link rel="shortcut icon" sizes="32x32" type="image/jpg" href="assets/img/LOGO 8 black.png">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900|Raleway:300,400,700,900" rel="stylesheet">
+		<link href="assets/fonts/all.css" rel="stylesheet">
+	    <link href="assets/css/bootstrap4.css" rel="stylesheet">
+	    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+	    <link href="assets/css/jquery-ui.css" rel="stylesheet">
+		    <!-- Custom styles for this template -->
+	    <script src="assets/js/Chart.js"></script>
+
+
+
+</head>
+<body>
+
+<!-------------- navbar -------------------->
+    <nav class="navbar fixed-top navbar-expand-md navbar-light">
+        <a href="" class="navbar-brand">Ticker <img src="assets/img/logo.png" width="35" height="30" class="d-inline-block align-center" alt=""> Stories</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class=""><i class="fas fa-ellipsis-h"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+        	<div class=" ml-lg-5 pl-lg-5 ml-md-5" id="search-top-hidden">
+			    <input class="mr-md-2 search-bar-top" type="text" placeholder="Enter A Stock Symbol" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter A Stock Symbol'" autocomplete="off" aria-label="Search">
+			    <button class="btn btn-outline-dark btn-md my-2 mb-sm-1 mt-sm-0 search-btn-top" >Search</button>
+			</div>
+			<div id="stockNameNavDiv" class="ml-md-5 pl-md-4">
+				<h2 class="stockName mr-sm-3 ml-sm-5"></h2>
+				<h6 class="stockName"></h6>	
+			</div>
+            <ul class="navbar-nav ml-sm-auto">
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/ticker.stories/" target="_blank" class="nav-link"><i  class="navSocial fab fa-instagram mr-3"></i></a>
+                    <a href="https://twitter.com/tickerStories" target="_blank" class="nav-link"><i  class="navSocial fab fa-twitter mr-3"></i></a>
+                    <a href="https://www.fb.me/TickerStories" target="_blank" class="nav-link"><i  class="navSocial fab fa-facebook"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!-------------- navbar -------------------->
+
+<!------ Hidden information when clicking on serch-top-bar ----->
+		<!--The Model --->
+		<div id="search-popup-show">
+				<div id="search-popup">
+					<div><i class="fas fa-times"></i></div>
+					<div id="wrongSymbolPopup">Can't Find This Symbol</div>
+					<p id="noDataPopup">Couldn't find any data about this ticker, Please try again</p>
+					<input id="search-input-popup" type="text" name="" placeholder="Enter A Stock Symbol" autofocus maxlength="4" minlength="2">
+					<i class="fas fa-search"></i>
+				</div>
+				<h3 id="loadingPopup" class="flash">TickerStories<div class="loading"></div></h3>
+			<!-- </div> -->
+		</div>
+<!------ Hidden information when clicking on serch-top-bar ----->
+
+<!------------- First saerch bar ------------------> 
+	<div id="firstSearch" >
+		<div id="borderLeft"></div>	
+    	<div id="borderRight"></div>	
+		<div class="" style="position: relative;" >
+			<h1>EXPLORE YOUR STOCK</h1>
+		    <h2>Use our algorithms to get everything there is to know about the stock - fillings, stats, news and more.</h2>
+		    <p id="wrongSymbol">Can't Find This Symbol</p>
+		    <p id="noDataMain">Couldn't find any data about this ticker, Please try again</p>
+			<div class="search-placeholder">
+				<input type="text" class="search-bar" placeholder="Enter A Stock Symbol" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter A Stock Symbol'"  maxlength="6" minlength="2">
+				<button class="search-btn btn btn-outline-dark btn-lg">SEARCH</button>
+			</div>
+			<h3 id="loadingMain" class="flash">TickerStories<div class="loading"></div></h3>
+		</div>
+	</div>  
+
+<!------------ hidden information ------------------->
+	<div id="result" style="display: none;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-0 col-md-10 offset-md-1 col-sm-12 order-lg-2  ">
+						<div class="row">
+							<h4 id="stockSymbol" class="aboveChart">Apple Inc.</h4>	
+						</div>
+						<div class="row">
+							<div id="divAboveChart">
+								<h5 class="aboveChart"><span></span></h5>	
+								<h6 class="aboveChart"></h6>
+							</div>	
+						</div>
+						<div id="concernDiv" class="row"><i class="fas fa-circle"></i><span id="concern"> Going Concern</span></div>
+						<div class="row">
+							<p id="aboveChart" class="aboveChart pHide">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<!-- <img src="https://maps.googleapis.com/maps/api/streetview?size=300x200&location=one apple park way cupertino, california&key=AIzaSyCX7IhAGuNzki8Hug9Zfe2iFqkH3PKnqaM"> --></p>
+						</div>
+						<div class="row">
+						<div class="aboveChartHr">
+								<hr class="hrLeft"/><span id="spanHr">Read More</span> <hr class="hrRight" />
+						</div>
+						</div>
+
+	<!-------------CHART ------------->
+					<h5 style="margin-top: 6%; color: #71a2b6; font-weight: 700;">Stats From Fillings</h5>		
+					<div id="chartContainer">
+						<!-- <canvas id="myChart"></canvas> -->
+						<p id="noDataChat">NO DATA AVAILABLE</p>
+					</div>
+					<h5 style="font-size: 17px;"><span>Volume Traded Today</span><span style="float: right">Total Float</span></h5>
+					<div id="progressBar" class="progress">
+					  <div id="greenBarVolumeFloat1" class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%; background-color: lightgreen; color: black; font-family: 'Lato', sans-serif; "></div>
+					  <div id="greenBarVolumeFloat2" class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%; background-color: #ff7272; color: black; font-family: 'Lato', sans-serif;"></div>
+					</div>
+	<!-------------CHART ------------->
+					
+	<!-------------Table ------------->	
+					<div id="statsTable" class="table2">
+						<h5>Key Data</h5>
+						<table class="table table-hover">
+					  		
+					  		<tbody>
+					    		<tr>
+					      			<td>Otto</td>
+					      			<td>@mdo</td>
+					    		</tr>
+					    		<tr>
+					      			<td>Otto</td>
+					      			<td>@mdo</td>
+					    		</tr>
+				    
+				    			<tr>
+					      			<td>Otto</td>
+					      			<td>@mdo</td>
+					    		</tr>
+					    		<tr>
+					      			<td>Otto</td>
+					      			<td>@mdo</td>
+					    		</tr>
+				  			</tbody>
+						</table>
+					</div>
+				<div id="warrantsTableDiv" class="table2">
+					<div id="warrantsTable"></div>
+				</div>
+					
+				</div>
+				<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 order-lg-1" >
+					<div class="dropdown">
+						<div class="button"><h5 style="margin-top:35%; border-bottom: 1px solid #0000001f; color: #71a2b6; font-weight: 700; ">Most Recent Fillings</h5>
+						  <button id="filter" class="btn btn-outline-dark btn-sm" type="button" data-toggle="button" aria-haspopup="true" aria-expanded="false">
+						    Filters
+						  </button>
+						  <div id="myDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  	<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+						    <div id="showLessDropdown">
+						    	<div class="btn-group btn-group-toggle includeExcludeBtnContainer " data-toggle="buttons">
+								  	<label class="btn btn-outline-success btn-sm active includeExcludeBtn">
+								    	<input type="radio" name="options" id="option1" autocomplete="off" checked> Include
+								  	</label>
+								  	<label class="btn btn-outline-danger btn-sm includeExcludeBtn">
+								    	<input type="radio" name="options" id="option2" autocomplete="off"> Exclude
+								 	 </label>
+								 </div>
+							    <div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck1" >
+								  <label class="custom-control-label" for="customCheck1">10-K</label>
+								</div>
+							    <div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck2">
+								  <label class="custom-control-label" for="customCheck2">Form 4</label>
+								</div>
+							    <div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck3">
+								  <label class="custom-control-label" for="customCheck3">8-K</label>
+								</div> 
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck4">
+								  <label class="custom-control-label" for="customCheck4">SC 13G</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck5">
+								  <label class="custom-control-label" for="customCheck5">10-Q</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck6">
+								  <label class="custom-control-label" for="customCheck6">DEF 14A</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck7">
+								  <label class="custom-control-label" for="customCheck7">10-K/A</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck8">
+								  <label class="custom-control-label" for="customCheck8">PRE 14A</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck9">
+								  <label class="custom-control-label" for="customCheck9">EFFECT</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck10">
+								  <label class="custom-control-label" for="customCheck10">CORRESP</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck11">
+								  <label class="custom-control-label" for="customCheck11">S-3/A</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck12">
+								  <label class="custom-control-label" for="customCheck12">S-3</label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck13">
+								  <label class="custom-control-label" for="customCheck13">424B3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-8
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SD
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SC 13D
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SC 13G
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">6-K
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">424B5
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">20-F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">20FR12B
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">20FR12G
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">Form 3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">Form 5
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">8-A12B
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">DEF 14A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">D
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">X-17F-1A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">X-17A-19
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">WB-APP
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">TH
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">TCR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">TA-W
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">TA-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">TA-2
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">T-6
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">T-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">T-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">T-2
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">T-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SIP
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SF-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SF-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SE
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SDR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SCI
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SBSE-W
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SBSE-C
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SBSE-BD
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SBSE-A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">SBSE
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-20
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-11
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-6
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">S-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">R31
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">PILOT
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">PF
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">NRSRO
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-SAR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-Q
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-PX
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-PORT
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-MFP
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-LIQUID
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-CSR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-CR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-CEN
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-54C
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-54A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-27D-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-23C-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-18F-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-17F-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-17F-2
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-17D-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-8F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-14
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-8B-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-8B-2
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-8A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-6F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-6
+								  </label>
+								</div
+								><div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-5
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-3
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">N-1A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MSDW
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MSD
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MA-W
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MA-I
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MA-NR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">MA
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ID
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-X
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-80
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-N
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-10
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-8
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-7
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-6
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">F-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">CUSTODY
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">CFPORTAL
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">CB
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">CA-1
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">BDW
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">BD-N
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">BD
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ATS-R
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ATS
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ADV-W
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ADV-NR
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ADV-H
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ADV-E
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ADV
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ABS-EE
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ABS-15G
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">ABS DD-15E
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">144
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">40-F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">25
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">24F-2
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">19B-4(E)
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">19B-7
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">19B-4
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">18-k
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">18
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">15F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">15
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">13H
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">13F
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">12B-25
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">11-K
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">11-M
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">10-D
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">9-M
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">8-A
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">8-M
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">7-M
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">2-E
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-Z
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-U
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-SA
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-N
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-E
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-K
+								  </label>
+								</div>
+								<div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">1-A
+								  </label>
+								</div><div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">Form 1
+								  </label>
+								</div><div class="custom-control custom-checkbox">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14">
+								  <label class="custom-control-label" for="customCheck14">424B4
+								  </label>
+								</div>
+							</div>
+							<div class="dropdown-divider"></div>
+							<a id="clearBtn" onclick="clearBtn()">clear</a>
+							<button id="saveBtn" type="button" class="btn btn-outline-dark" onclick="saveBtn()">Save</button>
+						  </div>
+						</div>
+					</div>
+					<ul class="ul">
+						<div class="scrollDiv"></div>
+						<!-- <p id="noDataLoadMore">Couldnt find any Data about this ticker, Please try again</p> -->
+					</ul>
+					</div>
+				
+
+				<div class="col-lg-3 offset-lg-0 col-md-5  col-sm-6 order-md-3 " >
+					<div class="row">
+						<h3 id="topNews"><img src="assets/img/newsletter.png" width="70" height="70" class="d-inline-block align-center" alt=""></h3>
+						<div id="scrollNews">
+							<div id="cardNews">
+								<div class="card bg-light mb-3">
+								</div>
+							</div>
+						</div>
+					</div>								
+				</div>
+				<div id="TweetsDiv" class="row order-md-4 " style="width: 100%">
+						<h3 id="topTweets"><i style="color: #4AB3F4" class="fab fa-twitter"></i></h3>
+						<div class="topTweets mx-auto">
+							<a class="twitter-timeline" data-height="400"  data-width="23%" href="https://twitter.com/modern_rock?ref_src=twsrc%5Etfw">Tweets by modern_rock</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							<a class="twitter-timeline" data-width="23%" data-height="400" href="https://twitter.com/team3dstocks?ref_src=twsrc%5Etfw">Tweets by team3dstocks</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							<a class="twitter-timeline" data-height="400" data-width="23%" href="https://twitter.com/AT09_Trader?ref_src=twsrc%5Etfw">Tweets by AT09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							<a class="twitter-timeline" data-height="400" data-width="23%" href="https://twitter.com/Michael_Katz11?ref_src=twsrc%5Etfw">Tweets by Mike Katz</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</div>
+				</div>
+			<!-- 	<div class="col col-md-4 col col-sm-6 " ></div>
+			</div>
+			<div class="row">
+				<div class="col col-md-4 col col-sm-6" >
+
+				</div>
+				<div class="col col-md-4 col col-sm-6" >
+					
+				</div>
+				<div class="col col-md-4 col col-sm-6" ></div>
+			</div> -->
+			</div>
+
+<!-- Hidden information when clicking on serch-top-bar -->
+	<!-- 	<div class="container">
+			<div id="search-popup">
+				<input type="text" name="" placeholder="Entry New Symbol" autofocus>
+				<i class="fas fa-search"></i>
+			</div>
+		</div> -->
+		</div>
+		<footer class="footer">
+		<div class="container">
+			<div class="footer-contents">
+				<div class="footer-content">
+					<a href="#" class="brand-logo">
+						<img id="imgLogo" src="assets/img/logo.png" width="180" height="170" class="d-inline-block align-top" alt="">
+					</a>
+				</div>
+				<div class="footer-content">
+					<ul class="corp-links">
+						<div class="corp-links-content">
+							<h5 class="corp-links-content-hed">Company</h5>
+							<a href="" data-toggle="modal" data-target="#about" class="corp-link">About</a>
+							<a href="" data-toggle="modal" data-target="#contact" class="corp-link">Contact</a>
+						</div>
+						<div class="corp-links-content">
+							<h5 class="corp-links-content-hed">Legal</h5>
+							<a href="" data-toggle="modal" data-target="#termsAndConditions" class="corp-link">Terms & Conditions</a>
+							<a href="" data-toggle="modal" data-target="#privacyPolicy" class="corp-link">Privacy Policy</a>
+						</div>
+					</ul>
+				</div>
+				<div class="footer-content">
+					<h5 class="footer-content-hed">Follow Us</h5>
+					<ul class="shares">
+						<a href="https://www.instagram.com/ticker.stories/" target="_blank" class="share icon-instagram" rel="noopener"><i class="fab fa-instagram"></i></a>
+						<a href="https://twitter.com/tickerStories" target="_blank" class="share icon-twitter" target="" rel="noopener"><i class="fab fa-twitter"></i></a>
+						<a href="https://www.fb.me/TickerStories" target="_blank" class="share icon-facebook" target="" rel="noopener"><i class="fab fa-facebook"></i></a>
+					</ul>
+					<a href="" data-toggle="modal" data-target="#subscribe" class="footer-subscribe">Subscribe</a>
+				</div>
+			</div>
+			<div class="footer-copyright">©2018 TickerStories. All rights reserved.</div>
+		</div>
+	</footer>
+	 <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+        	<div class="modal-content">
+        		<div class="modal-header">
+        			<h5 style="font-weight: 900;" class="modal-title" id="exampleModalLongTitle">About</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        		</div>
+        		<div class="modal-body">
+        			We are two brothers that want to check if it is possible to make money out of the stock excange. Niv is a computer science student on the IDC and Dor is a freelancer. Together we built this dope website that gethering all the relevant data you need in order to decide if buy or  sell a stock. Niv used his AI expirience to collect all the data and Dor present it to you over the screen in the best way. Our goal is to reach as much traders as we can and provide them the best help to get the right decision! 
+       			</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       			</div>
+       		</div>
+       	</div>
+    </div>
+    <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+        	<div class="modal-content">
+        		<div class="modal-header">
+        			<h5 style="font-weight: 900;" class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        		</div>
+        		<div class="modal-body">
+        			With any question, a missing data or collaboration please email us at <strong>support@tickerstories.com</strong> 
+       			</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       			</div>
+       		</div>
+       	</div>
+    </div>
+    <div class="modal fade" id="termsAndConditions" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+        	<div class="modal-content">
+        		<div class="modal-header">
+        			<h5 style="font-weight: 900;" class="modal-title" id="exampleModalLongTitle">Terms & Conditions</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        		</div>
+        		<div class="modal-body">
+        			 
+       			</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       			</div>
+       		</div>
+       	</div>
+    </div>
+    <div class="modal fade" id="privacyPolicy" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+        	<div class="modal-content">
+        		<div class="modal-header">
+        			<h5 style="font-weight: 900;" class="modal-title" id="exampleModalLongTitle">Privacy Policy</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        		</div>
+        		<div class="modal-body">
+        			 
+       			</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       			</div>
+       		</div>
+       	</div>
+    </div>
+    <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-top modal-lg" role="document">
+        	<div class="modal-content">
+        		<div class="modal-header">
+        			<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        		</div>
+        		<div class="modal-body">
+        			<h1 id="h1Subscribe">Ticker <img id="imgSubscribe" src="assets/img/logo.png" class="d-inline-block align-center" alt=""> Stories</h1>
+        			<h1 id="h2Subscribe">Get The Hottest Ticker Stories</h1>
+        			<div class="form-inline" id="emailSubscriveForm">
+        				<input id="emailInput" type="email" name="email" placeholder="Email">
+        				<button id="submitEmail" class="btn btn-outline-dark btn-lg" onclick="submitEmail()">SIGN UP</button>
+        			</div>
+       			</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       			</div>
+       		</div>
+       	</div>
+    </div>
+
+</div> 
+
+	
+	<script src="assets/js/jquery-3.2.1.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap4.js"></script>
+	<script src="assets/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="assets/js/index.js"></script>
+
+	
+</body>
+</html>
